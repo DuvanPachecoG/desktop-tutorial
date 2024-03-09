@@ -1,80 +1,59 @@
 
-def factorial(n):
-    if n==0:
-        return 1
-    else:
-        return n * factorial (n - 1)
+class ataques():
+    def ataque(self):
+        pass
+
+class movimientos():
+    def mover(self):
+        pass
+
+class soldadoAtaque(ataques):
+    def ataque(self):
+        print("Soldado: utiliza su arma")
+
+class arqueroAtaque(ataques):
+    def ataque(self):
+        print("Arquero: dispara una flecha")
+
+class caballeroAtaque(ataques):
+    def ataque(self):
+        print("Caballero: tira su lanza")
 
 
-def fibonacci(n):
-    if n<=1:
-        return n
-    else:
-        return fibonacci(n-1)+ fibonacci(n-2)
+class movimientoSoldado(movimientos):
+    def mover(self):
+        print("Soldado: el soldado corre")
 
+class movimientoArquero(movimientos):
+    def mover(self):
+        print("Arquero: Avanzando y busca una buena posicion")
 
+class movimientoCaballero(movimientos):
+    def mover(self):
+        print("Caballero: cabalga a gran velocidad")
 
-def sum_of_numbers(n):
-    if n == 0:
-        return 0
-    else:
-        return n + sum_of_numbers ( n - 1)
+class UnidadMilitar:
+    def __init__(self, ataques, movimientos):
+        self.ataques = ataques
+        self.movimientos = movimientos
 
+    def perform_ataque(self):
+        self.ataques.ataque()
 
+    def perform_movimiento(self):
+        self.movimientos.mover()
 
-def power(a, n):
-    if n==0:
-        return 1
-    else:
-        return a * power(a, n - 1)
+if __name__ == "__main__":
+    soldado = UnidadMilitar(soldadoAtaque(), movimientoSoldado())
+    arquero = UnidadMilitar(arqueroAtaque(), movimientoArquero())
+    caballero = UnidadMilitar(caballeroAtaque(), movimientoCaballero())
 
+    soldado.perform_movimiento()
+    soldado.perform_ataque()
 
+    arquero.perform_movimiento()
+    arquero.perform_ataque()
 
-def max_in_list(lst):
-    if len(lst) == 1:
-        return lst[0]
-    else: 
-        max_rest = max_in_list(lst[1:])
-        return lst[0] if lst[0] > max_rest else max_rest
+    caballero.perform_movimiento()
+    caballero.perform_ataque()
 
-
-
-from models.tree_node import TreeNode
-
-def binary_search(arr: list, target: int):
-    left,right=0,len(arr)-1
-    while left<=right:
-        mid=(left+right)//2
-        if arr[mid]==target:
-            return mid
-        elif arr[mid]<target:
-            left= mid+1
-        else: right=mid-1
-    return -1
-
-
-def binary_search_matrix(matrix: list[list[int]], target: int)->bool:
-    if not matrix or not matrix[0]:
-        return False
-    filas, columnas=len(matrix),len(matrix[0])
-    fila,columa=0,columnas-1
-    while fila < filas and columa >= 0:
-        if matrix[fila][columa] == target:
-            return True
-        elif matrix[fila][columa] < target:
-            fila += 1
-        else:
-            columa -=1
-    
-    return False
-
-def binary_search_tree(root: TreeNode, target: int)-> bool:
-    act=root
-    while act:
-        if act.val==target:
-            return True
-        elif act.val< target:
-            act=act.right
-        else:
-            act=act.left
-    return False
