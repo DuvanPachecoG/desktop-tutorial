@@ -1,0 +1,58 @@
+
+class ataques():
+    def ataque(self):
+        pass
+
+class movimientos():
+    def mover(self):
+        pass
+
+class soldadoAtaque(ataques):
+    def ataque(self):
+        print("Soldado: utiliza su arma")
+
+class arqueroAtaque(ataques):
+    def ataque(self):
+        print("Arquero: dispara una flecha")
+
+class caballeroAtaque(ataques):
+    def ataque(self):
+        print("Caballero: tira su lanza")
+
+
+class movimientoSoldado(movimientos):
+    def mover(self):
+        print("Soldado: el soldado corre")
+
+class movimientoArquero(movimientos):
+    def mover(self):
+        print("Arquero: Avanzando y busca una buena posicion")
+
+class movimientoCaballero(movimientos):
+    def mover(self):
+        print("Caballero: cabalga a gran velocidad")
+
+class UnidadMilitar:
+    def __init__(self, ataques, movimientos):
+        self.ataques = ataques
+        self.movimientos = movimientos
+
+    def perform_ataque(self):
+        self.ataques.ataque()
+
+    def perform_movimiento(self):
+        self.movimientos.mover()
+
+if __name__ == "__main__":
+    soldado = UnidadMilitar(soldadoAtaque(), movimientoSoldado())
+    arquero = UnidadMilitar(arqueroAtaque(), movimientoArquero())
+    caballero = UnidadMilitar(caballeroAtaque(), movimientoCaballero())
+
+    soldado.perform_movimiento()
+    soldado.perform_ataque()
+
+    arquero.perform_movimiento()
+    arquero.perform_ataque()
+
+    caballero.perform_movimiento()
+    caballero.perform_ataque()
