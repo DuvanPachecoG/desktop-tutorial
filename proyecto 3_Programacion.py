@@ -1,7 +1,9 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
 # Observer Pattern
 class Observer(ABC):
+    @abstractmethod
+
 
     def update(self):
         pass
@@ -47,6 +49,8 @@ class Store:
 
 # Strategy Pattern
 class PricingStrategy(ABC):
+    @abstractmethod
+
     
     def calcular_precio(self, precio):
         pass
