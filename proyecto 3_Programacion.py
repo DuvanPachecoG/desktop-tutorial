@@ -87,8 +87,8 @@ if __name__ == "__main__":
     normal_strategy = NormalPricingStrategy()
  
 
-    product1 = Product("Camisa", "Camisa de algodón", 90, normal_strategy)
-    product2 = Product("Pantalón", "Pantalón vaquero", 110, normal_strategy)
+    product1 = Product("Camisa", "Camisa de millonarios", 90, normal_strategy)
+    product2 = Product("Pantalón", "Pantalón en lana negro", 110, normal_strategy)
     store.add_product(product1)
     store.add_product(product2)
 
